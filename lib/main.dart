@@ -82,18 +82,27 @@ class _HomeWidgetState extends State<HomeWidget>
     String statusText = status.toString();
     if (status == Mesibo.MESIBO_STATUS_ONLINE) {
       statusText = "Online";
+      print("Mesibo_onConnectionStatus: Mesibo.MESIBO_STATUS_ONLINE");
       if (selectedUser == 1) {
         initProfilesUser1();
       } else if (selectedUser == 2) {
         initProfilesUser2();
       }
     } else if (status == Mesibo.MESIBO_STATUS_CONNECTING) {
+      print("Mesibo_onConnectionStatus: Mesibo.MESIBO_STATUS_CONNECTING");
+
       statusText = "Connecting";
     } else if (status == Mesibo.MESIBO_STATUS_CONNECTFAILURE) {
+      print("Mesibo_onConnectionStatus: Mesibo.MESIBO_STATUS_CONNECTFAILURE");
+
       statusText = "Connect Failed";
     } else if (status == Mesibo.MESIBO_STATUS_NONETWORK) {
+      print("Mesibo_onConnectionStatus: Mesibo.MESIBO_STATUS_NONETWORK");
+
       statusText = "No Network";
     } else if (status == Mesibo.MESIBO_STATUS_AUTHFAIL) {
+      print("Mesibo_onConnectionStatus: Mesibo.MESIBO_STATUS_AUTHFAIL");
+
       statusText = "The token is invalid.";
     }
     mesiboStatus = 'Mesibo status: $statusText';
@@ -105,7 +114,6 @@ class _HomeWidgetState extends State<HomeWidget>
         '759b6a38bf5b8867f823ea2a6d96e0a4e0c129d8a31fba3f38eaa4af797za4175518091');
     mesibo.setListener(this);
     await mesibo.setDatabase("6464762.db");
-    await mesibo.restoreDatabase('6464762.db', 9999);
     await mesibo.start();
 
     isMesiboInit = true;
@@ -120,7 +128,6 @@ class _HomeWidgetState extends State<HomeWidget>
         'af34e7778c1589c1074dc2cb7e0293056995f96773d3983ecc4b114dwacb66a921ae');
     mesibo.setListener(this);
     await mesibo.setDatabase('6464711.db');
-    await mesibo.restoreDatabase('6464711.db', 9999);
     await mesibo.start();
     isMesiboInit = true;
     MesiboReadSession rs = MesiboReadSession.createReadSummarySession(this);
