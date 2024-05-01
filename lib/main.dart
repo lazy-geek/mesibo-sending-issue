@@ -241,15 +241,13 @@ class _HomeWidgetState extends State<HomeWidget>
         );
 
         summaryMessages.value = [...temp];
-        print(summaryMessages.value
-            .map((e) => (e as types.TextMessage).text)
-            .join(' , '));
       }
     }
   }
 
   _handleSendPressed(types.PartialText partialText) async {
     if (remoteProfile == null) return;
+    print("send button clicked");
     MesiboMessage message = remoteProfile!.newMessage();
     message.message = partialText.text;
     message.mid = await mesibo.getUniqueMessageId();
