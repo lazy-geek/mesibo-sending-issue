@@ -250,7 +250,7 @@ class _HomeWidgetState extends State<HomeWidget>
     print("send button clicked");
     MesiboMessage message = remoteProfile!.newMessage();
     message.message = partialText.text;
-    message.mid = await mesibo.getUniqueMessageId();
+    // message.mid = await mesibo.getUniqueMessageId();
     message.send();
   }
 
